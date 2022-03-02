@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useInput } from '../../hooks/useInput'
 
-export const UsersList = ({ data, deleteUser, updateUser }) => {
+export const UsersList = ({ data, deleteUser, updateUser, setData }) => {
   const name = useInput('', { minLength: 3, maxLength: 10 })
   const tel = useInput('', { minLength: 3, maxLength: 10 })
   const [userInput, showUserInput] = useState(false)
   const [currentUser, setCurrentUser] = useState(null)
+  // const loadData = useCallback(async () => await setData(), [setData])
+
+  useEffect(() => {
+    setData()
+  }, [])
 
   const handleClickUpdate = (user) => {
     updateUser({ id: user.id, name: name.value || user.name, tel: tel.value || user.tel })

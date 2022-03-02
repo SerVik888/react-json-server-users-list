@@ -7,7 +7,11 @@ export const AddUser = ({ addUser }) => {
   const [showInput, setShowInput] = useState(false)
 
   const handleClick = () => {
-    addUser({ name: name.value, tel: tel.value })
+    addUser({
+      id: Date.now().toString(),
+      name: name.value,
+      tel: tel.value,
+    })
     name.setValue('')
     tel.setValue('')
     setShowInput(false)

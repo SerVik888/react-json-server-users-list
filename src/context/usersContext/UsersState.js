@@ -4,14 +4,14 @@ import { usersReducer } from './usersReducer'
 import { API } from '../../api'
 import { GET_DATA, FILTER, ADD_USER, DELETE_USER, UPDATE_USER, IS_AUTH } from '../types'
 import { UsersContext } from './UsersContext'
-import { formReducer } from './formReducer'
+import { authReducer } from './authReducer'
 
 export const UsersState = ({ children }) => {
   const initialState = {
     data: [],
   }
   const [state, usersDispatch] = useReducer(usersReducer, initialState)
-  const [formState, formDispatch] = useReducer(formReducer, { isAuth: false })
+  const [authState, authDispatch] = useReducer(authReducer, { isAuth: false })
 
   const setData = async () => {
     const data = await API.getUsers()
@@ -33,14 +33,14 @@ export const UsersState = ({ children }) => {
 
   const loginUser = async (user) => {
     const isAuth = await API.authUser(user)
-    formDispatch({ type: IS_AUTH, isAuth })
+    authDispatch({ type: IS_AUTH, isAuth })
   }
 
   return (
     <UsersContext.Provider
       value={{
         data: state.data,
-        isAuth: formState.isAuth,
+        isAuth: authState.isAuth,
         setData,
         addUser,
         deleteUser,
