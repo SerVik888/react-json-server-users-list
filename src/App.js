@@ -13,18 +13,18 @@ function App() {
 
   return (
     <div className='App'>
-      {/* {!isAuth ? ( */}
-      <LoginPage loginUser={loginUser} />
-      {/* ) : ( */}
-      <HomePage
-        data={data}
-        setData={setData}
-        addUser={addUser}
-        deleteUser={deleteUser}
-        updateUser={updateUser}
-        usersFilter={usersFilter}
-      />
-      {/* )} */}
+      {isAuth ? (
+        <LoginPage loginUser={loginUser} />
+      ) : (
+        <HomePage
+          data={data}
+          setData={setData}
+          addUser={addUser}
+          deleteUser={deleteUser}
+          updateUser={updateUser}
+          usersFilter={usersFilter}
+        />
+      )}
     </div>
   )
 }

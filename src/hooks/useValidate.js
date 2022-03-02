@@ -15,12 +15,12 @@ export const useValidation = (value, validations) => {
           break
         case 'minLength':
           value.length < validations[validation]
-            ? setMinLengthError(`минимальная длина ${validations[validation]} символов`)
+            ? setMinLengthError(`не меньше ${validations[validation]} символов`)
             : setMinLengthError('')
           break
         case 'maxLength':
           value.length > validations[validation]
-            ? setMinLengthError(`максимальная длина ${validations[validation]} символов`)
+            ? setMinLengthError(`не больше ${validations[validation]} символов`)
             : setMaxLengthError('')
           break
         case 'isEmail':

@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import s from './homePage.module.css'
 import { useInput } from '../../hooks/useInput'
 
 export const UsersList = ({ data, deleteUser, updateUser, setData }) => {
@@ -6,7 +7,6 @@ export const UsersList = ({ data, deleteUser, updateUser, setData }) => {
   const tel = useInput('', { minLength: 3, maxLength: 10 })
   const [userInput, showUserInput] = useState(false)
   const [currentUser, setCurrentUser] = useState(null)
-  // const loadData = useCallback(async () => await setData(), [setData])
 
   useEffect(() => {
     setData()
@@ -30,33 +30,74 @@ export const UsersList = ({ data, deleteUser, updateUser, setData }) => {
   }
 
   return (
-    <div>
-      {data.map((user) => (
-        <div key={user.id}>
-          {userInput && user.id === currentUser ? (
-            <>
-              {name.isDirty && (name.error || tel.error) && <div>{name.error || tel.error}</div>}
-              <input
-                placeholder='Имя'
-                value={name.value}
-                name='name'
-                onChange={name.onChange}
-                onBlur={name.onBlur}
-              />{' '}
-              <input placeholder='Телефон' value={tel.value} name='tel' onChange={tel.onChange} onBlur={tel.onBlur} />{' '}
-              <button disabled={!name.inputValid || !tel.inputValid} onClick={() => handleClickUpdate(user)}>
-                Изменить данные
-              </button>
-            </>
-          ) : (
-            <>
-              {user.name} {user.tel}
-              <button onClick={() => handleClickChange(user)}>Изменить</button>
-            </>
-          )}{' '}
-          <button onClick={() => handleClickDelete(user)}>Удалить</button>
-        </div>
-      ))}
-    </div>
+    <table className={s.table}>
+      <thead>
+        <tr>
+          <th>
+            <span>Имя</span>
+          </th>
+          <th>
+            <span>Телефон</span>
+          </th>
+          <th>
+            <span>Изменить</span>
+          </th>
+          <th>
+            <span>Удалить</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((user) => (
+          <tr key={user.id}>
+            {userInput && user.id === currentUser ? (
+              <>
+                <td>
+                  {name.isDirty && name.error && <span className={s.error}>{name.error}</span>}
+                  <input
+                    autoFocus
+                    placeholder='Имя'
+                    value={name.value}
+                    name='name'
+                    onChange={name.onChange}
+                    onBlur={name.onBlur}
+                  />
+                </td>
+                <td>
+                  {name.isDirty && tel.error && <span className={s.error}>{tel.error}</span>}
+                  <input
+                    placeholder='Телефон'
+                    value={tel.value}
+                    name='tel'
+                    onChange={tel.onChange}
+                    onBlur={tel.onBlur}
+                  />
+                </td>
+                <td>
+                  <button disabled={!name.inputValid || !tel.inputValid} onClick={() => handleClickUpdate(user)}>
+                    Изменить данные
+                  </button>
+                </td>
+              </>
+            ) : (
+              <>
+                <td>
+                  <span>{user.name}</span>
+                </td>
+                <td>
+                  <span>{user.tel}</span>
+                </td>
+                <td>
+                  <button onClick={() => handleClickChange(user)}>Изменить</button>
+                </td>
+              </>
+            )}
+            <td>
+              <button onClick={() => handleClickDelete(user)}>Удалить</button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   )
 }

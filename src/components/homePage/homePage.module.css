@@ -1,0 +1,125 @@
+body {
+    margin: 20px 0;
+}
+
+table {
+    margin: auto;
+    border: 2px solid #1DA1F2;
+    border-radius: 10px;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+thead {
+    background-color: #d5eeff;
+}
+td, th {
+    position: relative;
+    max-width: 200px;
+    min-width: 150px;
+    margin:0;
+    padding: 10px 10px;
+    border: 1px solid #1DA1F2;
+}
+td input {
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #d5eeff;
+}
+td button {
+    border-radius: 5px;
+    border: none;
+    padding: 11px 30px;
+    background-color: #1DA1F2;
+}
+td button:active {
+    color:rgb(253, 55, 55);
+    background-color: #b0daf5;
+}
+td button:hover {
+    cursor: pointer;
+    color:rgb(247, 107, 107);
+    background-color: #70c5fd;
+}
+td button:disabled {
+    cursor: not-allowed;
+    color:rgb(247, 107, 107);
+    background-color: #394a55;
+}
+td span.error {
+    position: absolute;
+    width: 100%;
+    top: -3px;
+    left: -20px;
+    border-radius: 10px 10px 0 0 ;
+    color: rgb(247, 107, 107); 
+    z-index: 2;
+}
+
+.loginPage {
+    padding-top: 10%;
+    text-align: center;
+    margin:auto;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.loginForm {
+    position: relative;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+ }
+
+
+.h1 {
+    margin-left: 10px;
+    opacity: 0.8;
+}
+.input {
+    box-sizing: border-box;
+    /* width: 100%; */
+    margin-bottom: 10px;
+    border: 1px solid #1DA1F2;
+    border-radius: 5px;
+    padding: 10px;
+}
+.input:focus {
+    position: relative;
+    outline: none;
+    border: 2px solid #1DA1F2;
+    border-radius: 5px;
+}
+
+.btn {
+    border-radius: 5px;
+    border: none;
+    padding: 11px 30px;
+    margin: 20px 10px 0 10px;
+    background-color: #1DA1F2;
+}
+.btn:active {
+    color:rgb(253, 55, 55);
+    background-color: #b0daf5;
+}
+.btn:hover {
+    cursor: pointer;
+    color:rgb(247, 107, 107);
+    background-color: #70c5fd;
+}
+.btn:disabled {
+    cursor: not-allowed;
+    color:rgb(247, 107, 107);
+    background-color: #394a55;
+}
+
+.error {
+    text-align: center;
+    padding: 0;
+    margin:0 0 -20px 20px;
+    border-radius: 10px 10px 0 0 ;
+    color: rgb(247, 107, 107); 
+    z-index: 2;
+}

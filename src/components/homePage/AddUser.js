@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
+import s from './homePage.module.css'
 import { useInput } from '../../hooks/useInput'
 
 export const AddUser = ({ addUser }) => {
@@ -21,15 +22,32 @@ export const AddUser = ({ addUser }) => {
     <div>
       {showInput ? (
         <div>
-          {name.isDirty && (name.error || tel.error) && <div>{name.error || tel.error}</div>}
-          <input placeholder='имя' value={name.value} name='name' onChange={name.onChange} onBlur={name.onBlur} />{' '}
-          <input placeholder='телефон' value={tel.value} name='tel' onChange={tel.onChange} onBlur={tel.onBlur} />{' '}
-          <button disabled={!name.inputValid || !tel.inputValid} onClick={handleClick}>
+          {name.isDirty && (name.error || tel.error) && <div className={s.error}>{name.error || tel.error}</div>}
+          <input
+            className={s.input}
+            autoFocus
+            placeholder='имя'
+            value={name.value}
+            name='name'
+            onChange={name.onChange}
+            onBlur={name.onBlur}
+          />{' '}
+          <input
+            className={s.input}
+            placeholder='телефон'
+            value={tel.value}
+            name='tel'
+            onChange={tel.onChange}
+            onBlur={tel.onBlur}
+          />{' '}
+          <button className={s.btn} disabled={!name.inputValid || !tel.inputValid} onClick={handleClick}>
             Отправить
           </button>
         </div>
       ) : (
-        <button onClick={setShowInput}>Добавить пользователя</button>
+        <button className={s.btn} onClick={setShowInput}>
+          Добавить пользователя
+        </button>
       )}
     </div>
   )
