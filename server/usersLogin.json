@@ -1,0 +1,12 @@
+{
+    "usersLogin": [{
+        "email": "servik@ss.com",
+        "password": "1234"
+    }, {
+        "email": "server@lagaet.com",
+        "password": "0000"
+    }, {
+        "email": "login@login.com",
+        "password": "0000"
+    }]
+}
