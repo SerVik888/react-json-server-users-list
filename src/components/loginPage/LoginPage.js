@@ -2,7 +2,7 @@ import React from 'react'
 import { useInput } from '../../hooks/useInput'
 
 export const LoginPage = ({ loginUser }) => {
-  const email = useInput('', { isEmpty: '', minLength: 10, maxLength: 15, isEmail: '' })
+  const email = useInput('', { isEmpty: '', minLength: 10, maxLength: 20, isEmail: '' })
   const password = useInput('', { isEmpty: '', minLength: 4, maxLength: 10 })
 
   const handleSubmit = (e) => {
