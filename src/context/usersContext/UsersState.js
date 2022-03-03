@@ -2,20 +2,26 @@ import React, { useReducer } from 'react'
 
 import { usersReducer } from './usersReducer'
 import { API } from '../../api'
-import { GET_DATA, FILTER, ADD_USER, DELETE_USER, UPDATE_USER, IS_AUTH } from '../types'
+import { GET_DATA, FILTER, ADD_USER, DELETE_USER, UPDATE_USER, IS_AUTH, LOADING } from '../types'
 import { UsersContext } from './UsersContext'
 import { authReducer } from './authReducer'
 
 export const UsersState = ({ children }) => {
   const initialState = {
     data: [],
+    loading: false,
   }
-  const [state, usersDispatch] = useReducer(usersReducer, initialState)
+  const [usersState, usersDispatch] = useReducer(usersReducer, initialState)
   const [authState, authDispatch] = useReducer(authReducer, { isAuth: false })
 
+  const setLoading = (loading) => {
+    usersDispatch({ type: LOADING, loading })
+  }
   const setData = async () => {
+    setLoading(true)
     const data = await API.getUsers()
     usersDispatch({ type: GET_DATA, data })
+    setLoading(false)
   }
   const addUser = async (user) => {
     API.postUser(user)
@@ -39,7 +45,8 @@ export const UsersState = ({ children }) => {
   return (
     <UsersContext.Provider
       value={{
-        data: state.data,
+        data: usersState.data,
+        loading: usersState.loading,
         isAuth: authState.isAuth,
         setData,
         addUser,

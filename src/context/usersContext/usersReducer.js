@@ -1,4 +1,4 @@
-import { ADD_USER, DELETE_USER, FILTER, GET_DATA, UPDATE_USER } from '../types'
+import { ADD_USER, DELETE_USER, FILTER, GET_DATA, LOADING, UPDATE_USER } from '../types'
 
 export const usersReducer = (state, action) => {
   switch (action.type) {
@@ -6,6 +6,11 @@ export const usersReducer = (state, action) => {
       return {
         ...state,
         data: action.data,
+      }
+    case LOADING:
+      return {
+        ...state,
+        loading: action.loading,
       }
     case ADD_USER:
       return {

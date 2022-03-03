@@ -4,7 +4,11 @@ import { AddUser } from './AddUser'
 import { Search } from './Search'
 import { UsersList } from './UsersList'
 
-export const HomePage = ({ data, setData, addUser, deleteUser, updateUser, usersFilter }) => {
+export const HomePage = ({ data, setData, addUser, deleteUser, updateUser, usersFilter, loading }) => {
+  if (loading && !data.length) {
+    return <h1>Подождите идёт загрузка...</h1>
+  }
+
   return (
     <div>
       <h1 className={s.h1}>Домашняя страница</h1>
