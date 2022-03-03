@@ -4,7 +4,6 @@ import { useInput } from '../../hooks/useInput'
 
 export const Search = ({ usersFilter, dataLength }) => {
   const search = useInput('')
-  console.log(search.value)
 
   const searchHandleChange = () => {
     usersFilter(search.value.trim())

@@ -24,9 +24,8 @@ export const UsersList = ({ data, deleteUser, updateUser, setData }) => {
     name.setValue(user.name)
     tel.setValue(user.tel)
   }
-  const handleClickDelete = (user) => {
-    deleteUser(user.id)
-    console.log(user)
+  const handleClickDelete = (userId) => {
+    deleteUser(userId)
   }
 
   return (
@@ -93,7 +92,7 @@ export const UsersList = ({ data, deleteUser, updateUser, setData }) => {
               </>
             )}
             <td>
-              <button onClick={() => handleClickDelete(user)}>Удалить</button>
+              <button onClick={() => handleClickDelete(user.id)}>Удалить</button>
             </td>
           </tr>
         ))}

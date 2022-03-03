@@ -80,7 +80,6 @@ td span.error {
 }
 .input {
     box-sizing: border-box;
-    /* width: 100%; */
     margin-bottom: 10px;
     border: 1px solid #1DA1F2;
     border-radius: 5px;
