@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import s from './homePage.module.css'
 import { useInput } from '../../hooks/useInput'
 
-export const UsersList = ({ data, deleteUser, updateUser, setData }) => {
+export const UsersList = memo(({ data, deleteUser, updateUser, setData }) => {
   const name = useInput('', { minLength: 3, maxLength: 10 })
   const tel = useInput('', { minLength: 3, maxLength: 10 })
   const [userInput, showUserInput] = useState(false)
@@ -99,4 +99,4 @@ export const UsersList = ({ data, deleteUser, updateUser, setData }) => {
       </tbody>
     </table>
   )
-}
+})

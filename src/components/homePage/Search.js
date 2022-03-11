@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
 import s from './homePage.module.css'
 import { useInput } from '../../hooks/useInput'
 
-export const Search = ({ usersFilter, dataLength }) => {
+export const Search = memo(({ usersFilter, dataLength }) => {
   const search = useInput('')
 
   const searchHandleChange = () => {
@@ -26,4 +26,4 @@ export const Search = ({ usersFilter, dataLength }) => {
       {search.isDirty && !dataLength && <h2>Ничего не найдено!!!</h2>}
     </div>
   )
-}
+})

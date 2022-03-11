@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import s from './homePage.module.css'
 import { useInput } from '../../hooks/useInput'
 
-export const AddUser = ({ addUser }) => {
+export const AddUser = memo(({ addUser }) => {
   const name = useInput('', { minLength: 3, maxLength: 10 })
   const tel = useInput('', { minLength: 3, maxLength: 10 })
   const [showInput, setShowInput] = useState(false)
@@ -51,4 +51,4 @@ export const AddUser = ({ addUser }) => {
       )}
     </div>
   )
-}
+})

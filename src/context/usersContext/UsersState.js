@@ -13,7 +13,6 @@ export const UsersState = ({ children }) => {
   }
   const [usersState, usersDispatch] = useReducer(usersReducer, initialState)
   const [authState, authDispatch] = useReducer(authReducer, { isAuth: false })
-
   const setLoading = (loading) => {
     usersDispatch({ type: LOADING, loading })
   }
@@ -23,6 +22,7 @@ export const UsersState = ({ children }) => {
     usersDispatch({ type: GET_DATA, data })
     setLoading(false)
   }
+
   const addUser = async (user) => {
     API.postUser(user)
     usersDispatch({ type: ADD_USER, user })
